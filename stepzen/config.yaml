@@ -1,0 +1,4 @@
+configurationset:
+  - configuration:
+      name: postgresql_config
+      uri: postgresql://ep-tight-smoke-a5olxckt.us-east-2.aws.neon.tech/enterprise-agents?user=enterprise-agents_owner&password=AnLvb6Xxo2PV
