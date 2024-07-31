@@ -53,3 +53,38 @@ export interface GetChatbotByUserData {
 export interface GetChatbotByUserDataVariables {
   clerk_user_id: string;
 }
+
+export interface GetUserChatbotsResponse {
+  chatbotsByUser: Chatbot[];
+}
+
+export interface GetUserChatbotsVariables {
+  clerk_user_id: string;
+}
+
+export interface GetChatSessionMessagesVariables {
+  id: number;
+}
+
+export interface GetChatSessionsMessagesResponse {
+  chat_sessions: {
+    id: number;
+    created_at: string;
+    messages: Message[];
+    chatbots: {
+      name: string;
+    };
+    guests: {
+      name: string;
+      email: string;
+    };
+  };
+}
+
+export interface MessagesByChatSessionIdResponse {
+  chat_sessions: ChatSession;
+}
+
+export interface MessagesByChatSessionIdVariables {
+  chat_session_id: number;
+}
