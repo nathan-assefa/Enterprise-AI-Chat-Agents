@@ -34,7 +34,7 @@ export interface Message {
   id: number;
   chat_session_id: number;
   content: string;
-  created_at: Date;
+  created_at: string;
   sender: string; // 'user' or 'ai'
 }
 
