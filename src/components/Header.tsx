@@ -39,8 +39,8 @@ const Navbar = () => {
     <div className="sticky h-14 inset-x-0 top-0 z-30 w-full border-b border-gray-200 bg-white/75 backdrop-blur-lg transition-all">
       <MaxWidthWrapper>
         <div className="flex h-14 items-center justify-between border-b border-zinc-200">
-          <Link href="/">
-            <p className="flex items-center text-xl">
+          <Link href="/" className="cursor-pointer">
+            <p className="flex items-center text-xl cursor-pointer">
               Bot<span className="text-primary">Builder</span>
             </p>
           </Link>

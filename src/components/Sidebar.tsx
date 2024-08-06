@@ -50,11 +50,11 @@ const Sidebar = () => {
                 gap-2
                 p-5
                 rounded-md
-                bg-[#2991EE]
+                bg-primary
               "
               >
                 <Icon className="h-6 w-6 lg:h-8 lg:w-8" />
-                <div className="hidden md:inline cursor-pointer">
+                <div className="hidden hover:inline cursor-pointer">
                   <p className="text-xl">{menu.name.top}</p>
                   <p className="text-sm font-extralight">{menu.name.bottom}</p>
                 </div>

@@ -130,25 +130,6 @@ const EditChatbot: React.FC<EditChatbotInterface> = ({ params: { id } }) => {
     }
   };
 
-  // const handleAddCharacteristic = async (content: string) => {
-  //   try {
-  //     // console.log("Adding characteristic with content: ", content);
-  //     const promise = addCharacteristic({
-  //       variables: {
-  //         chatbotId: Number(id),
-  //         content,
-  //       },
-  //     });
-  //     toast.promise(promise, {
-  //       loading: "Adding...",
-  //       success: "Information added",
-  //       error: "Failed to add information",
-  //     });
-  //   } catch (error) {
-  //     console.log("Failed to add characteristic: ", error);
-  //   }
-  // };
-
   if (loading)
     return (
       <div className="mx-auto animate-spin p-10">
@@ -169,9 +150,9 @@ const EditChatbot: React.FC<EditChatbotInterface> = ({ params: { id } }) => {
         md:sticky
         md:top-0
         z-50
-        sm:max-w-sm
+        sm:max-w-full
         ml-auto
-        space-y-2 md:border p-5 rounded-b-lg md:rounded-lg bg-[#2991EE]
+        space-y-2 md:border p-5 rounded-b-lg md:rounded-lg bg-primary
         "
       >
         <h2 className="text-white text-sm font-bold">Link to Chat</h2>
