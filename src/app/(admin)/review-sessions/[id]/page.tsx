@@ -31,7 +31,7 @@ const ReviewSession: React.FC<ReviewSessionInterface> = async ({
     query: GET_CHAT_SESSION_MESSAGES,
     variables: { id: parseInt(id) },
   });
-  console.log("chat session: ");
+  console.log("messages: ", messages);
   return (
     <div className="flex-1 p-10 pb-24">
       <h1 className="text-xl lg:text-3xl font-semibold">Session Review</h1>

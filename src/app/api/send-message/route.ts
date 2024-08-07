@@ -101,7 +101,7 @@ export async function POST(req: NextRequest) {
     // Step 5. Save the AI's response in the database
     const aiMessageResult = await serverClient.mutate({
       mutation: INSERT_MESSAGE,
-      variables: { chat_session_id, content, sender: "ai" },
+      variables: { chat_session_id, content: aiResponse, sender: "ai" },
     });
 
     // Step 6: Return the AI's response to the client

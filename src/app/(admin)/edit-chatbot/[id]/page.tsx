@@ -182,14 +182,14 @@ const EditChatbot: React.FC<EditChatbotInterface> = ({ params: { id } }) => {
       <section className="relative mt-5 bg-white p-5 md:p-10 rounded-lg">
         <Button
           variant="destructive"
-          className="absolute top-2 right-2 h-8 w-2"
+          className="absolute top-2 right-2 h-6 w-4"
           onClick={() => handleDeleteChatBot(id)}
         >
           X
         </Button>
 
         <div className="flex space-x-4">
-          <Avatar seed={chatbotName} />
+          {/* <Avatar seed={chatbotName} /> */}
           <form
             onSubmit={handleUpdataChatbot}
             className="flex flex-1 space-x-2 items-center"
