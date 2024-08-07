@@ -50,7 +50,7 @@ const Sidebar = () => {
                 gap-2
                 p-5
                 rounded-md
-                bg-primary
+                bg-purple-500
               "
               >
                 <Icon className="h-6 w-6 lg:h-8 lg:w-8" />

@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { Button, buttonVariants } from "@/components/ui/button";
-import { Blocks, CheckCircle, Leaf } from "lucide-react";
+import { Blocks, Bot, CheckCircle, Leaf } from "lucide-react";
 import MaxWidthWrapper from "@/components/max-width-wrapper";
 import Image from "next/image";
 
@@ -37,10 +37,11 @@ export default function Home() {
             Your easy-to-customize AI chat agent that helps you manage customer
             conversations effortlessly.
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 mt-6">
+          <div className="flex flex-col sm:flex-row gap-4 mt-6 items-center">
             {/* <Link href="/products" className={buttonVariants()}>
               Browse Trending
             </Link> */}
+            <Bot className="text-purple-500 h-10 w-10" />
             <Link href="/create-chatbot">
               <Button variant="default">
                 Create your first chatbot &rarr;
@@ -70,7 +71,7 @@ export default function Home() {
               <div className="mt-16 flow-root sm:mt-24 ">
                 <div className="-m-2 rounded-xl bg-gray-900/5 p-2 ring-1 ring-inset ring-gray-900/10 lg:-m-4 lg:rounded-2xl lg:p-4 ">
                   <Image
-                    src="/enhanced_chat.jpg"
+                    src="/chat_page.jpg"
                     alt="product preview"
                     width={1364}
                     height={866}
@@ -96,7 +97,7 @@ export default function Home() {
           </div>
         </div>
       </div>
-      <section className="border-t border-gray-200 bg-gray-50">
+      <section className="border-t border-gray-200 bg-gray-50 mt-8">
         <MaxWidthWrapper className="py-20">
           <div className="grid grid-cols-1 gap-y-12 sm:grid-cols-2 sm:gap-x-6 lg:grid-cols-3 lg:gap-x-8 lg:gap-y-0">
             {perks.map((perk) => (

@@ -47,6 +47,7 @@ const CreateChatbot = () => {
     >
       <div>
         <div className="max-w-md w-full space-y-4 text-center">
+          {/* <Bot className="text-purple-500 w-14 h-14" /> */}
           <h1 className="text-3xl font-bold tracking-tighter flex items-center mx-auto justify-center">
             Create <GitBranchPlus className="w-4 h-4 text-primary ml-2" />
           </h1>

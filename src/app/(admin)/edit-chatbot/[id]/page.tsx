@@ -106,7 +106,7 @@ const EditChatbot: React.FC<EditChatbotInterface> = ({ params: { id } }) => {
   if (loading)
     return (
       <div className="mx-auto animate-spin p-10 flex items-center justify-center">
-        <LoaderCircle className="w-8 h-8 text-primary" />
+        <LoaderCircle className="w-8 h-8 text-purple-500" />
       </div>
     );
 
@@ -124,7 +124,7 @@ const EditChatbot: React.FC<EditChatbotInterface> = ({ params: { id } }) => {
         max-w-sm
         sm:max-w-full
         ml-auto
-        space-y-2 md:border p-5 rounded-b-lg md:rounded-lg bg-primary
+        space-y-2 md:border p-5 rounded-b-lg md:rounded-lg bg-purple-500
         "
       >
         <h2 className="text-white text-sm font-bold">Link to Chat</h2>
@@ -154,9 +154,7 @@ const EditChatbot: React.FC<EditChatbotInterface> = ({ params: { id } }) => {
       <section className="relative mt-5 bg-white p-5 pt-12 md:p-10 rounded-lg">
         <CustomDialogTrigger
           header="Are you absolutely sure?"
-          content="This action cannot be undone. This will permanently delete your
-            account and remove your data from our servers."
-          description="Workspaces give you the power to collaborate with others. You can change your workspace privacy settings after creating the workspace too."
+          content="This action cannot be undone. It will permanently delete your chatbot and remove all related data from our servers."
           id={id}
         >
           <Button
@@ -181,6 +179,7 @@ const EditChatbot: React.FC<EditChatbotInterface> = ({ params: { id } }) => {
               required
             />
             <Button
+              className="bg-purple-500"
               type="submit"
               disabled={!chatbotName || LoadingUpdatingChatbot}
             >

@@ -41,16 +41,16 @@ const Messages: React.FC<MessagesInterface> = ({ messages, chatbotName }) => {
               {isSender ? (
                 <Avatar
                   seed={chatbotName}
-                  className="h-12 w-12 bg-white rounded-full border-2 border-primary"
+                  className="h-12 w-12 bg-white rounded-full border-2 border-purple-500"
                 />
               ) : (
-                <UserCircle className="text-primary" />
+                <UserCircle className="text-purple-500" />
               )}
             </div>
             <p
               className={`chat-bubble text-white ${
                 isSender
-                  ? "chat-bubble-primary bg-primary"
+                  ? "chat-bubble-purple-500 bg-purple-500"
                   : "chat-bubble-secondary bg-gray-200 text-gray-900"
               }`}
             >

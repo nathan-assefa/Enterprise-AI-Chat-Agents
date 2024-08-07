@@ -53,7 +53,7 @@ async function ViewChatbots() {
               to create one
             </p>
             <Link href="/create-chatbot">
-              <Button className="bg-primary text-white p-3 rounded-md mt-5">
+              <Button className="bg-purple-500 text-white p-3 rounded-md mt-5">
                 Create Chatbot
               </Button>
             </Link>
@@ -61,7 +61,7 @@ async function ViewChatbots() {
         </div>
       ) : (
         <div>
-          <header className="bg-primary text-primary-foreground py-4 px-6 shadow-md">
+          <header className="bg-purple-500 text-primary-foreground py-4 px-6 shadow-md">
             <div className="max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-between">
               <Link
                 href="#"
