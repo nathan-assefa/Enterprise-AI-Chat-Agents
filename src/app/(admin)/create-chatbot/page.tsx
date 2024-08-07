@@ -56,7 +56,7 @@ const CreateChatbot = () => {
           <div className="relative w-full">
             <form
               onSubmit={handleSubmit}
-              className="flex flex-col md:flex-row gap-2 mt-5"
+              className="flex flex-col space-y-4 mt-5"
             >
               <Input
                 type="text"
@@ -66,11 +66,11 @@ const CreateChatbot = () => {
                 className="max-w-lg"
                 required
               />
+              <Button disabled={loading || !name} className="w-full">
+                {loading ? "Creating Chatbot..." : "Create Chatbot"}
+              </Button>
             </form>
           </div>
-          <Button disabled={loading || !name} className="w-full">
-            {loading ? "Creating Chatbot..." : "Create Chatbot"}
-          </Button>
         </div>
       </div>
     </div>

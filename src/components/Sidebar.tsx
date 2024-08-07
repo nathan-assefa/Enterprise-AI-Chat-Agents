@@ -1,4 +1,4 @@
-import { BotMessageSquare, PencilLine, SearchIcon } from "lucide-react";
+import { Bot, ChartNoAxesGantt, Telescope } from "lucide-react";
 import Link from "next/link";
 import React from "react";
 
@@ -10,23 +10,23 @@ const Sidebar = () => {
         top: "Create",
         bottom: "Chatbots",
       },
-      icon: BotMessageSquare,
+      icon: Bot,
     },
     {
       url: "/view-chatbots",
       name: {
-        top: "Edit",
+        top: "Manage",
         bottom: "Chatbots",
       },
-      icon: PencilLine,
+      icon: ChartNoAxesGantt,
     },
     {
       url: "/review-sessions",
       name: {
-        top: "View",
+        top: "Manage",
         bottom: "Sessions",
       },
-      icon: SearchIcon,
+      icon: Telescope,
     },
   ];
 
@@ -54,7 +54,7 @@ const Sidebar = () => {
               "
               >
                 <Icon className="h-6 w-6 lg:h-8 lg:w-8" />
-                <div className="hidden hover:inline cursor-pointer">
+                <div className="hidden sm:inline cursor-pointer">
                   <p className="text-xl">{menu.name.top}</p>
                   <p className="text-sm font-extralight">{menu.name.bottom}</p>
                 </div>

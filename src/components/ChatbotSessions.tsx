@@ -11,6 +11,7 @@ import {
 } from "@/components/ui/accordion";
 import Avatar from "./avatar";
 import Link from "next/link";
+import { MailOpen, Timer, UserRoundSearch } from "lucide-react";
 
 interface ChatbotSessionsInterface {
   chatbots: Chatbot[];
@@ -26,6 +27,7 @@ const ChatbotSessions: React.FC<ChatbotSessionsInterface> = ({ chatbots }) => {
 
     setSortedChatbots(sortedArray);
   }, [chatbots]);
+  console.log("chatbots: ", chatbots);
 
   return (
     <div className="bg-white">
@@ -56,15 +58,18 @@ const ChatbotSessions: React.FC<ChatbotSessionsInterface> = ({ chatbots }) => {
                       <Link
                         href={`/review-sessions/${session.id}`}
                         key={session.id}
-                        className="relative p-10 bg-[#2991EE] text-white rounded-md block"
+                        className="relative p-10 bg-purple-500 text-white rounded-md block"
                       >
-                        <p className="text-lg font-bold">
-                          {session.guest?.name}
+                        <p className="text-lg font-semibold capitalize flex items-center">
+                          <UserRoundSearch className="w-4 h-4 mr-2" />{" "}
+                          {session.guests?.name}
                         </p>
-                        <p className="text-sm font-light">
-                          {session.guest?.email || "No email provided"}
+                        <p className="text-sm font-light flex items-center">
+                          <MailOpen className="w-4 h-4 mr-2" />{" "}
+                          {session.guests?.email || "No email provided"}
                         </p>
-                        <p className="absolute top-5 right-5 text-sm">
+                        <p className="absolute top-5 right-5 text-sm flex items-center">
+                          <Timer className="w-4 h-4 mr-1" />
                           <ReactTimeago date={new Date(session.created_at)} />
                         </p>
                       </Link>

@@ -34,7 +34,7 @@ const ReviewSessions: React.FC<ReviewSessionsInterface> = async () => {
       {" "}
       <h1 className="text-xl lg:text-3xl font-semibold mt-10">Chat Sessions</h1>
       <h2 className="mb-5">
-        Review all teh chat sessions the chat bots have had with your customers
+        View all the chat sessions your bots have had with customers.
       </h2>
       <ChatbotSessions chatbots={sortedChatbotsByUser} />
     </div>

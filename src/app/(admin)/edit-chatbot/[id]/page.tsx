@@ -5,9 +5,8 @@ import Link from "next/link";
 import React, { FormEvent, useEffect, useState } from "react";
 import { BASE_URL } from "../../../../../graphql/apollo-client";
 import { Button } from "@/components/ui/button";
-import { Copy } from "lucide-react";
+import { Copy, LoaderCircle } from "lucide-react";
 import { toast } from "sonner";
-import Avatar from "@/components/avatar";
 import { useMutation, useQuery } from "@apollo/client";
 import {
   GetChatbotByIdResponse,
@@ -21,6 +20,7 @@ import {
   UPDATE_CHATBOT,
 } from "../../../../../graphql/mutations/mutations";
 import { redirect } from "next/navigation";
+import CustomDialogTrigger from "@/components/custom-dialog-trigger";
 
 interface EditChatbotInterface {
   params: { id: string };
@@ -30,13 +30,6 @@ const EditChatbot: React.FC<EditChatbotInterface> = ({ params: { id } }) => {
   const [url, setUrl] = useState<string>("");
   const [chatbotName, setChatbotName] = useState<string>("");
   const [newCharacterstic, setNewCharacterstic] = useState<string>("");
-  // console.log(newCharacterstic);
-
-  const [deleteChatbot] = useMutation(DELETE_CHATBOT, {
-    refetchQueries: ["GetChatbotById"], // reftech the chatbot after deletion
-    awaitRefetchQueries: true,
-  });
-
   const [updateChatbot, { loading: LoadingUpdatingChatbot }] = useMutation(
     UPDATE_CHATBOT,
     {
@@ -66,26 +59,6 @@ const EditChatbot: React.FC<EditChatbotInterface> = ({ params: { id } }) => {
 
     setUrl(url);
   }, [id]);
-
-  const handleDeleteChatBot = async (id: string) => {
-    const isConfirmed = window.confirm(
-      "Are you sure you want to delete this chatbot?"
-    );
-
-    if (!isConfirmed) return;
-
-    try {
-      const promise = deleteChatbot({ variables: { id } });
-      toast.promise(promise, {
-        loading: "Deleting...",
-        success: "Chatbot Successfully deleted!",
-        error: "Failed to delete chatbot",
-      });
-    } catch (error) {
-      console.error("Error deleting the chatbot", error);
-      toast.error("Failed to delete chatbot");
-    }
-  };
 
   const handleUpdataChatbot = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -132,16 +105,14 @@ const EditChatbot: React.FC<EditChatbotInterface> = ({ params: { id } }) => {
 
   if (loading)
     return (
-      <div className="mx-auto animate-spin p-10">
-        <Avatar seed="My agenet" />
+      <div className="mx-auto animate-spin p-10 flex items-center justify-center">
+        <LoaderCircle className="w-8 h-8 text-primary" />
       </div>
     );
 
   if (error) return <p>Error:</p>;
 
   if (!data?.chatbots) return redirect("/view-chatbots");
-
-  console.log(LoadingUpdatingChatbot);
 
   return (
     <div className="px-0 md:p-10 m-5">
@@ -150,6 +121,7 @@ const EditChatbot: React.FC<EditChatbotInterface> = ({ params: { id } }) => {
         md:sticky
         md:top-0
         z-50
+        max-w-sm
         sm:max-w-full
         ml-auto
         space-y-2 md:border p-5 rounded-b-lg md:rounded-lg bg-primary
@@ -179,14 +151,21 @@ const EditChatbot: React.FC<EditChatbotInterface> = ({ params: { id } }) => {
         </div>
       </div>
 
-      <section className="relative mt-5 bg-white p-5 md:p-10 rounded-lg">
-        <Button
-          variant="destructive"
-          className="absolute top-2 right-2 h-6 w-4"
-          onClick={() => handleDeleteChatBot(id)}
+      <section className="relative mt-5 bg-white p-5 pt-12 md:p-10 rounded-lg">
+        <CustomDialogTrigger
+          header="Are you absolutely sure?"
+          content="This action cannot be undone. This will permanently delete your
+            account and remove your data from our servers."
+          description="Workspaces give you the power to collaborate with others. You can change your workspace privacy settings after creating the workspace too."
+          id={id}
         >
-          X
-        </Button>
+          <Button
+            variant="destructive"
+            className="absolute top-2 right-2 h-6 w-1"
+          >
+            X
+          </Button>
+        </CustomDialogTrigger>
 
         <div className="flex space-x-4">
           {/* <Avatar seed={chatbotName} /> */}
@@ -211,11 +190,11 @@ const EditChatbot: React.FC<EditChatbotInterface> = ({ params: { id } }) => {
         </div>
 
         <h2 className="text-xl font-bold mt-16">
-          Here's is what your AI knows...
+          Here's is what your AI agent knows...
         </h2>
         <p>
-          Your chatbot is equipped with the following information to assist you
-          in your conversations with your customers & users
+          Your chatbot is prepared with the following information to help in
+          your interactions with customers and users.
         </p>
 
         <div className="bg-gray-200 p-5 md:p-5 rounded-md mt-5">
