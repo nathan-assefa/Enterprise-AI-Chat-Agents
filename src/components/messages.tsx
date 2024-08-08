@@ -4,7 +4,7 @@ import { Message } from "@/lib/types/types";
 import { usePathname } from "next/navigation";
 import React, { useEffect, useRef } from "react";
 import Avatar from "./avatar";
-import { UserCircle } from "lucide-react";
+import { Bot, UserCircle } from "lucide-react";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 
@@ -39,9 +39,9 @@ const Messages: React.FC<MessagesInterface> = ({ messages, chatbotName }) => {
             ) : null}
             <div className={`chat-image avatar w-10 ${!isSender && "-mr-4"}`}>
               {isSender ? (
-                <Avatar
-                  seed={chatbotName}
-                  className="h-12 w-12 bg-white rounded-full border-2 border-purple-500"
+                <Bot
+                  // seed={chatbotName}
+                  className="h-12 w-12 bg-white text-purple-500"
                 />
               ) : (
                 <UserCircle className="text-purple-500" />

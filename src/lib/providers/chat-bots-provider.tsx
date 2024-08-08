@@ -1,80 +1,79 @@
-// "use client";
+"use client";
 
-// import React, { createContext, useContext, useState, useEffect } from "react";
-// import serverClient from "../server/server-client";
-// import {
-//   Chatbot,
-//   GetChatbotByUserData,
-//   GetChatbotByUserDataVariables,
-// } from "../types/types";
-// import { GET_CHATBOT_BY_USER } from "../../../graphql/queries/queries";
-// import { auth } from "@clerk/nextjs/server";
+import React, { createContext, useContext, useState, useEffect } from "react";
+import {
+  Chatbot,
+  GetChatbotByUserData,
+  GetChatbotByUserDataVariables,
+} from "../types/types";
+import { GET_CHATBOT_BY_USER } from "../../../graphql/queries/queries";
+import { useAuth } from "@clerk/nextjs";
+import { useQuery } from "@apollo/client";
 
-// interface chatbotInterface {
-//   chatbotsByUser: Chatbot[];
-//   loading: boolean;
-// }
+interface ChatbotInterface {
+  chatbotsByUser: Chatbot[];
+  loading: boolean;
+}
 
-// const useChatbotSource = (): chatbotInterface => {
-//   const [chatbotsByUser, setChatbotsByUser] = useState<Chatbot[]>([]);
-//   const [loading, setLoading] = useState<boolean>(true);
+const useChatbotSource = (): ChatbotInterface => {
+  const { userId } = useAuth();
+  const [chatbotsByUser, setChatbotsByUser] = useState<Chatbot[]>([]);
+  const [loading, setLoading] = useState<boolean>(true);
 
-//   useEffect(() => {
-//     const fetchChatbots = async () => {
-//       try {
-//         const { userId } = await auth();
+  useEffect(() => {
+    const fetchChatbots = async () => {
+      if (!userId) return;
 
-//         const { data } = await serverClient.query<
-//           GetChatbotByUserData,
-//           GetChatbotByUserDataVariables
-//         >({
-//           query: GET_CHATBOT_BY_USER,
-//           variables: {
-//             clerk_user_id: userId!,
-//           },
-//         });
+      try {
+        const { data } = useQuery<
+          GetChatbotByUserData,
+          GetChatbotByUserDataVariables
+        >(GET_CHATBOT_BY_USER, {
+          variables: { clerk_user_id: userId },
+        });
 
-//         if (data && data.chatbotsByUser) {
-//           const sortedChatbots = [...data.chatbotsByUser].sort(
-//             (a, b) =>
-//               new Date(b.created_at).getTime() -
-//               new Date(a.created_at).getTime()
-//           );
-//           setChatbotsByUser(sortedChatbots);
-//         }
-//       } catch (error) {
-//         console.error("Error fetching chatbots:", error);
-//       } finally {
-//         setLoading(false);
-//       }
-//     };
+        console.log("data: ", data);
 
-//     fetchChatbots();
-//   }, []);
+        if (data && data.chatbotsByUser) {
+          const sortedChatbots = [...data.chatbotsByUser].sort(
+            (a, b) =>
+              new Date(b.created_at).getTime() -
+              new Date(a.created_at).getTime()
+          );
+          setChatbotsByUser(sortedChatbots);
+        }
+      } catch (error) {
+        console.error("Error fetching chatbots:", error);
+      } finally {
+        setLoading(false);
+      }
+    };
 
-//   console.log(chatbotsByUser);
+    fetchChatbots();
+  }, [userId]);
+  console.log("chatbots", chatbotsByUser);
 
-//   return { chatbotsByUser, loading };
-// };
+  return { chatbotsByUser, loading };
+};
 
-// const ChatbotContext = createContext<ReturnType<typeof useChatbotSource>>(
-//   {} as ReturnType<typeof useChatbotSource>
-// );
+const ChatbotContext = createContext<ReturnType<typeof useChatbotSource>>(
+  {} as ReturnType<typeof useChatbotSource>
+);
 
-// export const useChatbotList = () => {
-//   return useContext(ChatbotContext);
-// };
+export const useChatbotList = () => {
+  return useContext(ChatbotContext);
+};
 
-// export const ChatbotListProvider = ({
-//   children,
-// }: {
-//   children: React.ReactNode;
-// }) => {
-//   const chatbotSource = useChatbotSource();
+export const ChatbotListProvider = ({
+  children,
+}: {
+  children: React.ReactNode;
+}) => {
+  const chatbotSource = useChatbotSource();
 
-//   return (
-//     <ChatbotContext.Provider value={chatbotSource}>
-//       {children}
-//     </ChatbotContext.Provider>
-//   );
-// };
+  return (
+    <ChatbotContext.Provider value={chatbotSource}>
+      {children}
+    </ChatbotContext.Provider>
+  );
+};

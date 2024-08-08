@@ -1,8 +1,6 @@
 import { SignedIn, SignedOut, SignInButton, UserButton } from "@clerk/nextjs";
 import React from "react";
 import Link from "next/link";
-import { buttonVariants } from "./ui/button";
-import { ArrowRight } from "lucide-react";
 import MaxWidthWrapper from "./max-width-wrapper";
 
 const Navbar = () => {
@@ -12,7 +10,7 @@ const Navbar = () => {
         <div className="flex h-14 items-center justify-between border-b border-zinc-200">
           <Link href="/" className="cursor-pointer">
             <p className="flex items-center text-xl cursor-pointer font-bold">
-              Bot<span className="text-primary">Builder</span>
+              Bot<span className="text-purple-500">Builder</span>
             </p>
           </Link>
 

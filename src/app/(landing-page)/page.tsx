@@ -43,7 +43,7 @@ export default function Home() {
             </Link> */}
             <Bot className="text-purple-500 h-10 w-10" />
             <Link href="/create-chatbot">
-              <Button variant="default">
+              <Button className="bg-purple-500">
                 Create your first chatbot &rarr;
               </Button>
             </Link>
@@ -67,7 +67,7 @@ export default function Home() {
           </div>
 
           <div>
-            <div className="mx-auto max-w-2xl max-h-xl px-6 lg:px-8 ">
+            <div className="mx-auto max-w-3xl max-h-xl px-6 lg:px-8 ">
               <div className="mt-16 flow-root sm:mt-24 ">
                 <div className="-m-2 rounded-xl bg-gray-900/5 p-2 ring-1 ring-inset ring-gray-900/10 lg:-m-4 lg:rounded-2xl lg:p-4 ">
                   <Image
@@ -106,7 +106,7 @@ export default function Home() {
                 className="text-center md:flex md:items-start md:text-left lg:block lg:text-center"
               >
                 <div className="md:flex-shrink-0 flex justify-center">
-                  <div className="h-16 w-16 flex items-center justify-center rounded-full bg-blue-100 text-blue-900">
+                  <div className="h-16 w-16 flex items-center justify-center rounded-full bg-purple-100 text-purple-500">
                     {<perk.Icon className="w-1/3 h-1/3" />}
                   </div>
                 </div>

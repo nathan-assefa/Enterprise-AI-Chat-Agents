@@ -18,7 +18,6 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Button } from "@/components/ui/button";
 import startNewChat from "@/lib/startNewChat";
-import Avatar from "@/components/avatar";
 import { useQuery } from "@apollo/client";
 import {
   GET_CHATBOT_BY_ID,
@@ -37,6 +36,7 @@ import {
   FormLabel,
   FormMessage,
 } from "@/components/ui/form";
+import { BotMessageSquare } from "lucide-react";
 
 interface ChatbotPageInterface {
   params: { id: string };
@@ -215,11 +215,8 @@ const ChatbotPage: React.FC<ChatbotPageInterface> = ({ params: { id } }) => {
       </Dialog>
 
       <div className="flex flex-col w-full max-w-3xl mx-auto bg-white md:rounded-t-lg shadow-2xl md:mt-10">
-        <div className="pb-4 border-b sticky top-0 z-50 bg-primary py-5 px-10 text-white md:rounded-t-lg flex items-center space-x-4">
-          <Avatar
-            seed={chatBotData?.chatbots.name!}
-            className="h-12 w-12 bg-white rounded-full border-2 border-white"
-          />
+        <div className="pb-4 border-b sticky top-0 z-50 bg-purple-500 py-5 px-10 text-white md:rounded-t-lg flex items-center space-x-4">
+          <BotMessageSquare className="h-12 w-12 bg-white rounded-full border-2 border-white text-purple-500" />
           <div>
             <h1 className="truncate text-lg">{chatBotData?.chatbots.name}</h1>
             <p className="text-sm text-gray-300">Typically replies Instantly</p>

@@ -16,7 +16,6 @@ import { GET_CHATBOT_BY_ID } from "../../../../../graphql/queries/queries";
 import Characteristic from "@/components/Characterstic";
 import {
   ADD_CHARACTERISTIC,
-  DELETE_CHATBOT,
   UPDATE_CHATBOT,
 } from "../../../../../graphql/mutations/mutations";
 import { redirect } from "next/navigation";
