@@ -1,6 +1,6 @@
 # ChatBot Creator Pro
 
-##### is an advanced SaaS platform designed to help users effortlessly build and deploy custom chatbots. Leveraging cutting-edge technologies like IBM, StepZen, GraphQL, Next.js, PostgreSQL, and OpenAI, our app offers a powerful and intuitive interface for creating sophisticated chatbots tailored to your needs. Whether you're looking to enhance customer service or streamline interactions, ChatBot Creator Pro provides the tools and flexibility to bring your chatbot ideas to life.
+##### is an advanced SaaS platform designed to help users effortlessly build and deploy custom chatbots. Leveraging cutting-edge technologies like IBM, StepZen, GraphQL, Next.js, PostgreSQL, Clerk Authentication, and OpenAI, our app offers a powerful and intuitive interface for creating sophisticated chatbots tailored to your needs. Whether you're looking to enhance customer service or streamline interactions, ChatBot Creator Pro provides the tools and flexibility to bring your chatbot ideas to life.
 
 ![Application Logo](https://github.com/nathan-assefa/Enterprise-AI-Chat-Agents/blob/master/public/chat_page.jpg)
 
